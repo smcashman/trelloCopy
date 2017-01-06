@@ -3,15 +3,26 @@ var TestUtils = require('react-addons-test-utils');
 var should = require('chai').should();
 
 var Card = require('../components/card');
+var Board = require('../components/board');
 
 describe('Card component', function() {
     it('Renders the card text',  function() {
-        var content="this is a test"
+      
 
         var renderer = TestUtils.createRenderer();
-        renderer.render(<Card text={content} />);
+        renderer.render(<Card />);
         var result = renderer.getRenderOutput();
-        result.text.should.equal('this is a test');
+        result.props.className.should.equal('card');
 
+    });
+});
+
+describe('Board component', function() {
+    it('Renders three lists',  function() {
+
+        var renderer = TestUtils.createRenderer();
+        renderer.render(<Board />);
+        var result = renderer.getRenderOutput();
+        result.props.className.should.equal('boardlist');
     });
 });
